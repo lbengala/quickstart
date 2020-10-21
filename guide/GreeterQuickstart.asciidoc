@@ -13,7 +13,7 @@ Switch to the `quickstarts/greeter` directory and instruct Maven to build and de
 
 The quickstart uses a Maven plugin to deploy the application. The plugin requires JBoss WildFly to be running (you can find out how to start the server in <<GettingStarted-on_linux, Installing and starting the JBoss server on Linux, Unix or Mac OS X>> or <<GettingStarted-on_windows, Installing and starting the JBoss server on Windows>>).
 
-Or you can start the server using an IDE, like JBoss Developer Studio. If you are using JBoss Developer Studio, you can deploy the quickstart by right clicking on the `greeter` project, and choosing _Run As -> Run On Server_:
+Or you can start the server using an IDE, like CodeReady Studio. If you are using CodeReady Studio, you can deploy the quickstart by right clicking on the `greeter` project, and choosing _Run As -> Run On Server_:
 
 image:gfx/Eclipse_Greeter_Deploy_1.png[]
 
@@ -54,9 +54,7 @@ The quickstart is comprised of two JSF views, an entity, and a number of CDI bea
              WEB-INF/greeter-quickstart-ds.xml, you can find it in 
              the source at 
              src/main/webapp/WEB-INF/greeter-quickstart-ds.xml -->
-        <jta-data-source>
-            java:jboss/datasources/GreeterQuickstartDS               <2>
-        </jta-data-source>
+        <jta-data-source>java:jboss/datasources/GreeterQuickstartDS</jta-data-source> <2>
         <properties>
             <!-- Properties for Hibernate -->                        <3>
             <property name="hibernate.hbm2ddl.auto" 
@@ -466,9 +464,9 @@ Using declarative transaction management has allowed us to remove a third of the
 
 [NOTE]
 ========================================================================
-Sharp eyed developers who are used to Java EE will have noticed that we 
-have added this EJB to a war. This is the key improvement offered in 
-EJB 3.1 (which was first included in Java EE 6).
+Sharp eyed developers who are used to Jakarta EE will have noticed that we
+have added this EJB to a war. This is the key improvement offered in
+EJB 3.1.
 ========================================================================
 
 Finally, let's take a look at the `Resources` class, which provides resources such as the entity manager. CDI recommends using "resource producers", as we do in this quickstart, to alias resources to CDI beans, allowing for a  consistent style throughout our application: 

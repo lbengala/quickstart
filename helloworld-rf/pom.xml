@@ -25,7 +25,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>16.0.0.Beta1-SNAPSHOT</version>
+        <version>22.0.0.Beta1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>helloworld-rf</artifactId>
@@ -44,7 +44,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Similarly to the JBoss Java EE 7 BOM above, the RichFaces BOM specifies the
+            <!-- Similarly to the JBoss Jakarta EE 8 BOM above, the RichFaces BOM specifies the
                 versions of artifacts required for using RichFaces in your project. -->
             <dependency>
                 <groupId>org.richfaces</groupId>
@@ -59,8 +59,8 @@
 
         <!-- Import the CDI API, we use provided scope as the API is included in JBoss WildFly -->
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <scope>provided</scope>
         </dependency>
 

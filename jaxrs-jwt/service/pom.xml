@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>jaxrs-jwt</artifactId>
-        <version>16.0.0.Beta1-SNAPSHOT</version>
+        <version>22.0.0.Beta1-SNAPSHOT</version>
     </parent>
     <artifactId>jaxrs-jwt-service</artifactId>
     <packaging>war</packaging>
@@ -44,8 +44,8 @@
         <!-- Import the CDI API, we use provided scope as the API is included in
             JBoss WildFly -->
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -70,8 +70,8 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

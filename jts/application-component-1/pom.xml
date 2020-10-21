@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>jts</artifactId>
-        <version>16.0.0.Beta1-SNAPSHOT</version>
+        <version>22.0.0.Beta1-SNAPSHOT</version>
     </parent>
     <artifactId>jts-application-component-1</artifactId>
     <packaging>war</packaging>
@@ -39,14 +39,14 @@
     <dependencies>
         <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Import the JPA API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Import the client stub for the application-component-2 -->
@@ -76,7 +76,7 @@
         <!-- Import the JTA API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
             <groupId>org.jboss.spec.javax.transaction</groupId>
-            <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+            <artifactId>jboss-transaction-api_1.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

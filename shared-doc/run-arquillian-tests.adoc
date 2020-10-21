@@ -8,6 +8,12 @@ This quickstart provides Arquillian tests. By default, these tests are configure
 
 NOTE: The Arquillian tests deploy the application, so make sure you undeploy the quickstart before you begin.
 
+ifdef::arq-prerequisities[]
+== Arquillian Tests prerequisities
+
+{arq-prerequisities}
+endif::[]
+
 Follow these steps to run the tests.
 
 ifdef::standalone-server-type[]

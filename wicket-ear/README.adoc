@@ -6,14 +6,14 @@ include::../shared-doc/attributes.adoc[]
 :technologies: Apache Wicket, JPA
 
 [abstract]
-Demonstrates how to use the Wicket Framework 7.x with the JBoss server using the Wicket Java EE integration, packaged as an EAR
+Demonstrates how to use the Wicket Framework 7.x with the JBoss server using the Wicket Jakarta EE integration, packaged as an EAR
 
 :standalone-server-type: default
 :archiveType: ear
 
 == What is it?
 
-This is an example of how to use Wicket Framework 7.x with WildFly, leveraging features of {javaVersion}, using the Wicket Java EE integration.
+This is an example of how to use Wicket Framework 7.x with WildFly, leveraging features of {javaVersion}, using the Wicket Jakarta EE integration.
 
 Features used:
 
@@ -49,7 +49,7 @@ The application will be running at the following URL: http://localhost:8080/{art
 
 // Undeploy the Quickstart
 include::../shared-doc/undeploy-the-quickstart.adoc[leveloffset=+1]
-// Run the Quickstart in Red Hat Developer Studio or Eclipse
+// Run the Quickstart in Red Hat CodeReady Studio or Eclipse
 include::../shared-doc/run-the-quickstart-in-jboss-developer-studio.adoc[leveloffset=+1]
 
 == Debug the Application

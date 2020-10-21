@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>wildfly-wicket-ear-parent</artifactId>
-        <version>16.0.0.Beta1-SNAPSHOT</version>
+        <version>22.0.0.Beta1-SNAPSHOT</version>
     </parent>
     <artifactId>wildfly-wicket-ear-war</artifactId>
     <packaging>war</packaging>
@@ -31,19 +31,19 @@
 
         <!-- Import the JPA API. -->
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
         <!-- Import the CDI API. -->
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Wicket Java EE integration. -->
+        <!-- Wicket Jakarta EE integration. -->
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-cdi-1.1</artifactId>

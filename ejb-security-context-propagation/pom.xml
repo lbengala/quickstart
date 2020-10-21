@@ -25,7 +25,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>16.0.0.Beta1-SNAPSHOT</version>
+        <version>22.0.0.Beta1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>ejb-security-context-propagation</artifactId>
@@ -49,8 +49,12 @@
     </properties>
 
     <dependencies>
-
-        <!-- Include the ejb client jars -->
+        <!-- The EJB Client BOM provides application server-compatible dependency management,
+        used for building, testing or debugging EJB client applications. Import the BOM to the
+        dependency management section of the app's pom.xml file and then set dependencies on specific artifacts.
+        Alternatively, as shown in the following example, set a single dependency on the BOM for the app to depend
+        on all the artifacts it manages.
+        -->
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>

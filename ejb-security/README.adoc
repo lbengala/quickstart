@@ -1,12 +1,12 @@
 include::../shared-doc/attributes.adoc[]
 
-= ejb-security:  Using Java EE Declarative Security to Control Access
+= ejb-security:  Using Jakarta EE Declarative Security to Control Access
 :author: Sherif F. Makary, Stefan Guilhen
 :level: Intermediate
 :technologies: EJB, Security
 
 [abstract]
-The `ejb-security` quickstart demonstrates the use of Java EE declarative security to control access to EJBs in {productName}.
+The `ejb-security` quickstart demonstrates the use of Jakarta EE declarative security to control access to EJBs in {productName}.
 
 :standalone-server-type: default
 :archiveType: jar
@@ -15,7 +15,7 @@ The `ejb-security` quickstart demonstrates the use of Java EE declarative securi
 
 == What is it?
 
-The `ejb-security` quickstart demonstrates the use of Java EE declarative security to control access to EJBs in {productNameFull}.
+The `ejb-security` quickstart demonstrates the use of Jakarta EE declarative security to control access to EJBs in {productNameFull}.
 
 This quickstart takes the following steps to implement EJB security:
 
@@ -30,12 +30,16 @@ annotation in the EJB but it should not be granted access to the administrative 
 
 // System Requirements
 include::../shared-doc/system-requirements.adoc[leveloffset=+1]
+
 // Use of {jbossHomeName}
 include::../shared-doc/use-of-jboss-home-name.adoc[leveloffset=+1]
+
 // Add the Authorized Application User
 include::../shared-doc/add-application-user.adoc[leveloffset=+1]
+
 // Back Up the {productName} Standalone Server Configuration
 include::../shared-doc/back-up-server-standalone-configuration.adoc[leveloffset=+1]
+
 // Start the {productName} Standalone Server
 include::../shared-doc/start-the-standalone-server.adoc[leveloffset=+1]
 
@@ -177,10 +181,10 @@ process-state: reload-required
 
 // Restore the {productName} Standalone Server Configuration Manually
 include::../shared-doc/restore-standalone-server-configuration-manual.adoc[leveloffset=+2]
-// Run the Quickstart in Red Hat Developer Studio or Eclipse
+// Run the Quickstart in Red Hat CodeReady Studio or Eclipse
 include::../shared-doc/run-the-quickstart-in-jboss-developer-studio.adoc[leveloffset=+1]
 
-// Additional Red Hat Developer Studio instructions
+// Additional Red Hat CodeReady Studio instructions
 . Make sure you xref:add_the_application_user[Add the authorized application user] as described above.
 . Make sure you configure the server by running the JBoss CLI script as described above under xref:configure_the_server[Configure the Server].
 . To deploy the server project, right-click on the *{artifactId}* project and choose *Run As* –> *Maven build*. Enter *clean package wildfly:deploy* for the *Goals* and click *Run*. This deploys the `{artifactId}` JAR to the {productName} server.

@@ -1,12 +1,12 @@
 include::../shared-doc/attributes.adoc[]
 
-= servlet-security:  Using Java EE Declarative Security to Control Servlet Access
+= servlet-security:  Using Jakarta EE Declarative Security to Control Servlet Access
 :author: Sherif F. Makary, Pedro Igor, Stefan Guilhen
 :level: Intermediate
 :technologies: Servlet, Security
 
 [abstract]
-The `servlet-security` quickstart demonstrates the use of Java EE declarative security to control access to Servlets and Security in {productName}.
+The `servlet-security` quickstart demonstrates the use of Jakarta EE declarative security to control access to Servlets and Security in {productName}.
 
 :standalone-server-type: default
 :archiveType: war
@@ -15,7 +15,7 @@ The `servlet-security` quickstart demonstrates the use of Java EE declarative se
 
 == What is it?
 
-The `servlet-security` quickstart demonstrates the use of Java EE declarative security to control access to Servlets and Security in {productNameFull}.
+The `servlet-security` quickstart demonstrates the use of Jakarta EE declarative security to control access to Servlets and Security in {productNameFull}.
 
 When you deploy this example, two users are automatically created for you: user `quickstartUser` with password `quickstartPwd1!` and user `guest` with password `guestPwd1!`. This data is located in the `src/main/resources/import.sql` file.
 
@@ -223,10 +223,10 @@ process-state: reload-required
 
 // Restore the {productName} Standalone Server Configuration Manually
 include::../shared-doc/restore-standalone-server-configuration-manual.adoc[leveloffset=+2]
-// Run the Quickstart in Red Hat Developer Studio or Eclipse
+// Run the Quickstart in Red Hat CodeReady Studio or Eclipse
 include::../shared-doc/run-the-quickstart-in-jboss-developer-studio.adoc[leveloffset=+1]
 
-// Additional Red Hat Developer Studio instructions
+// Additional Red Hat CodeReady Studio instructions
 * Make sure you configure the server by running the JBoss CLI commands as described above under xref:configure_the_server{Configure the Server]. Stop the server at the end of that step.
 * Make sure you xref:restore_the_server_configuration[restore the {productName} server configuration] when you have completed testing this quickstart.
 

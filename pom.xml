@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>29</version>
+        <version>35</version>
     </parent>
 
     <groupId>org.wildfly.quickstarts</groupId>
@@ -30,7 +30,7 @@
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-    <version>16.0.0.Beta1-SNAPSHOT</version>
+    <version>22.0.0.Beta1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -51,37 +51,35 @@
         <jboss.home.name>WILDFLY_HOME</jboss.home.name>
         <product.name>WildFly</product.name>
         <!-- A base list of dependency and plug-in version used in the various quick starts. -->
-        <version.wildfly.maven.plugin>2.0.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
         <version.org.wildfly.checkstyle-config>1.0.7.Final</version.org.wildfly.checkstyle-config>
-        <version.org.wildfly.quickstarts.documentation.plugin>2.0.0.Beta1</version.org.wildfly.quickstarts.documentation.plugin>
+        <version.org.wildfly.quickstarts.documentation.plugin>2.0.0.Final</version.org.wildfly.quickstarts.documentation.plugin>
         <!-- other plug-in versions -->
         <version.com.mycyla.license>3.0</version.com.mycyla.license>
         <version.checkstyle>8.5</version.checkstyle>
-        <version.jaxws-tools-maven-plugin>1.2.2.Final</version.jaxws-tools-maven-plugin>
+        <version.jaxws-tools-maven-plugin>1.2.3.Final</version.jaxws-tools-maven-plugin>
         <!-- Explicitly declaring the source encoding eliminates the following
             message: [WARNING] Using platform encoding (UTF-8 actually) to copy
             filtered resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!-- Protocol to use for communication with remote maven repositories.
+                     You can set to 'http' if you are using a maven proxy and 'https'
+                     interferes with that. Use 'https' for builds that will be released
+                     to non-snapshot public maven repos -->
+        <maven.repository.protocol>https</maven.repository.protocol>
+        <!-- The full remote maven repo URL; can be overridden via -D for special use cases -->
+        <maven.repository.url>${maven.repository.protocol}://repository.jboss.org/nexus/content/groups/public/</maven.repository.url>
+        <!-- https://access.redhat.com/maven-repository -->
+        <maven.redhat.repository.url>${maven.repository.protocol}://maven.repository.redhat.com/ga/</maven.redhat.repository.url>
+
         <!-- Version of BOMs
         note: a SNAPSHOT version *requires* checkout of BOMs at https://github.com/wildfly/boms and build through "mvn clean install"
         -->
-        <version.server.bom>16.0.0.Beta1-SNAPSHOT</version.server.bom>
+        <version.server.bom>22.0.0.Beta1-SNAPSHOT</version.server.bom>
+        <version.microprofile.bom>22.0.0.Beta1-SNAPSHOT</version.microprofile.bom>
 
-        <!-- Versions of dependencies on server's core -->
-        <version.commons-io>2.5</version.commons-io>
-        <version.org.apache.httpcomponents.httpclient>4.5.4</version.org.apache.httpcomponents.httpclient>
-        <version.org.jboss.msc.jboss-msc>1.4.5.Final</version.org.jboss.msc.jboss-msc>
-        <version.org.slf4j>1.7.22.jbossorg-1</version.org.slf4j>
-
-        <!-- Versions of dependencies on server -->
-        <version.com.fasterxml.jackson>2.9.5</version.com.fasterxml.jackson>
-        <version.com.h2database>1.4.193</version.com.h2database>
-        <version.com.sun.istack>3.0.7</version.com.sun.istack>
-        <version.org.bouncycastle>1.60</version.org.bouncycastle>
-        <version.org.javassist>3.23.1-GA</version.org.javassist>
-
-        <!-- Other versions of dependencies -->
+        <!-- Versions of unmanaged dependencies -->
         <version.arquillian.angularjs.graphene>1.2.0.Beta1</version.arquillian.angularjs.graphene>
         <version.com.nimbusds.jose.jwt>5.4</version.com.nimbusds.jose.jwt>
         <version.deltaspike.core>1.5.1</version.deltaspike.core>
@@ -94,79 +92,59 @@
         <version.ro.isdc.wro4j>1.7.9</version.ro.isdc.wro4j>
         <version.spring.framework>4.3.14.RELEASE</version.spring.framework>
 
-        <jboss.developer.drupal.url>http://developer-rhdp-drupal.web.stage.ext.phx2.redhat.com/</jboss.developer.drupal.url>
+        <jboss.developer.drupal.url>http://rhdp-drupal.stage.redhat.com/</jboss.developer.drupal.url>
         <linkXRef>false</linkXRef>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${version.org.apache.httpcomponents.httpclient}</version>
-            </dependency>
-            <!-- JBoss distributes a complete set of Java EE APIs including a Bill
-                of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection)
-                of artifacts. We use this here so that we always get the correct versions
-                of artifacts. Here we use the jboss-eap-javaee8-with-tools stack (you can
-                read this as the JBoss stack of the Java EE APIs, with some extras tools
-                for your project, such as Arquillian for testing) -->
+            <!-- importing the jakartaee8-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-javaee8-with-tools</artifactId>
+                <artifactId>wildfly-jakartaee8-with-tools</artifactId>
                 <version>${version.server.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- importing the microprofile BOM adds MicroProfile specs -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-microprofile</artifactId>
+                <version>${version.microprofile.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <!-- Activate the JBoss Enterprise Maven Repository.
-
-        NOTE: Configuring the Maven repository in the pom.xml file is not a recommended procedure
-        and is only done here to make it easier to use the quickstarts.
-
-        For more information about how to configure Maven for your application,
-        see the section entitled 'Use the Maven Repository'
-        in the Development Guide for Red Hat JBoss Enterprise Application Platform located here:
-
-        https://access.redhat.com/documentation/en/red-hat-jboss-enterprise-application-platform/
-    -->
     <repositories>
         <repository>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>${maven.repository.url}</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </snapshots>
             <id>jboss-enterprise-maven-repository</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>jboss-enterprise-maven-repository-ea</id>
-            <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
-        </repository>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Maven Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <name>JBoss Enterprise Maven Repository</name>
+            <url>${maven.redhat.repository.url}</url>
             <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
         </repository>
     </repositories>
 
@@ -176,36 +154,25 @@
                 <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>${maven.repository.url}</url>
+        </pluginRepository>
+        <pluginRepository>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
             </snapshots>
             <id>jboss-enterprise-maven-repository</id>
-            <url>https://maven.repository.redhat.com/ga/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>jboss-enterprise-maven-repository-ea</id>
-            <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Maven Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
+            <name>JBoss Enterprise Maven Repository</name>
+            <url>${maven.redhat.repository.url}</url>
         </pluginRepository>
     </pluginRepositories>
+
     <build>
         <!-- Set the name of the WAR, used as the context root when the app is deployed. -->
         <finalName>${project.artifactId}</finalName>
@@ -450,6 +417,14 @@
                 <module>mail</module>
                 <module>managed-executor-service</module>
                 <module>messaging-clustering-singleton</module>
+                <module>microprofile-config</module>
+                <module>microprofile-fault-tolerance</module>
+                <module>microprofile-health</module>
+                <module>microprofile-jwt</module>
+                <module>microprofile-metrics</module>
+                <module>microprofile-openapi</module>
+                <module>microprofile-opentracing</module>
+                <module>microprofile-rest-client</module>
                 <module>numberguess</module>
                 <module>payment-cdi-event</module>
                 <module>resteasy-jaxrs-client</module>
@@ -771,7 +746,7 @@
                 </property>
             </activation>
             <properties>
-                <jboss.developer.drupal.url>http://developer-rhdp-drupal.web.prod.ext.phx2.redhat.com/</jboss.developer.drupal.url>
+                <jboss.developer.drupal.url>http://rhdp-drupal.redhat.com/</jboss.developer.drupal.url>
             </properties>
         </profile>
     </profiles>

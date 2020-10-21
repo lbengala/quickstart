@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>jaxws-retail</artifactId>
-        <version>16.0.0.Beta1-SNAPSHOT</version>
+        <version>22.0.0.Beta1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>jaxws-retail-service</artifactId>
@@ -47,7 +47,13 @@
             <artifactId>jboss-ejb-api_3.2_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- used to pull correct dependencies for jaxws-tools-maven-plugin  -->
+        <!-- The JAXWS Client BOM provides application server-compatible dependency management,
+        used for building, testing or debugging JAXWS client applications. Import the BOM to the
+        dependency management section of the app's pom.xml file and then set dependencies on specific artifacts.
+        Alternatively, as shown in the following example, set a single dependency on the BOM for the app to depend
+        on all the artifacts it manages.
+        In the following example, the BOM is used to pull the correct dependencies for jaxws-tools-maven-plugin.
+        -->
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-jaxws-client-bom</artifactId>
@@ -84,7 +90,7 @@
                     <wsdls>
                         <wsdl>${basedir}/src/main/webapp/WEB-INF/wsdl/ProfileMgmtService.wsdl</wsdl>
                     </wsdls>
-                    <fork>true</fork>
+                    <fork>false</fork>
                     <extension>true</extension>
                     <verbose>false</verbose>
                     <endpointClass></endpointClass>

@@ -4,13 +4,13 @@ include::shared-doc/attributes.adoc[]
 :toclevels: 4
 :numbered:
 
-ifndef::ProductRelease,EAPCDRelease[]
+ifndef::ProductRelease,EAPCDRelease,EAPXPRelease[]
 = WildFly Quickstarts
 
 [toc]
 
 [abstract]
-The quickstarts demonstrate Java EE 8 and a few additional technologies from the WildFly stack. They provide small, specific, working examples that can be used as a reference for your own project.
+The quickstarts demonstrate Jakarta EE 8 and a few additional technologies from the WildFly stack. They provide small, specific, working examples that can be used as a reference for your own project.
 
 [[introduction]]
 == Introduction
@@ -55,7 +55,7 @@ If you have downloaded a https://github.com/wildfly/wildfly/tags[tagged] or http
 
 If you plan to run the https://github.com/wildfly/wildfly[development version of the WildFly server], you must first download and build the WildFly server from source.
 
-. If you have not yet done so, you must clone https://github.com/wildfly/wildfly[Wildfly server] repository and navigate to it. You might also want to change the remote name from `origin` to `upstream` to be consistent with your other repositories.
+. If you have not yet done so, you must clone https://github.com/wildfly/wildfly[WildFly server] repository and navigate to it. You might also want to change the remote name from `origin` to `upstream` to be consistent with your other repositories.
 +
 [source,options="nowrap"]
 ----
@@ -91,7 +91,7 @@ If you are using the latest https://github.com/wildfly/quickstart[development ve
 
 However, if you  are using the latest https://github.com/wildfly/quickstart[development version] of the quickstarts and you see build errors indicating missing dependencies, you must first xref:build_wildfly_server[build the latest WildFly server] and then build and install the WildFly BOMs. This installs the latest Maven artifacts that are required by the SNAPSHOT version of the WildFly quickstarts that are still under development.
 
-. If you have not yet done so, clone https://github.com/wildfly/boms[Wildfly BOMs] repository and navigate to it. You might also want to rename the directory to `wildfly-boms` to make it clear which BOMs it contains and also change the remote name from `origin` to `upstream` to be consistent with your other repositories.
+. If you have not yet done so, clone https://github.com/wildfly/boms[WildFly BOMs] repository and navigate to it. You might also want to rename the directory to `wildfly-boms` to make it clear which BOMs it contains and also change the remote name from `origin` to `upstream` to be consistent with your other repositories.
 +
 [source,options="nowrap"]
 ----
@@ -151,7 +151,7 @@ To build all of the quickstart `README.html` files, including the root `README.h
 
 [source,options="nowrap"]
 ----
-$ mvn clean generate-resources -Pdocs
+$ mvn clean package -Pdocs
 ----
 
 [TIP]
@@ -221,9 +221,9 @@ $ mvn wildfly:undeploy
 ----
 
 [[run_the_quickstarts_in_jboss_developer_studio_or_eclipse]]
-== Run the Quickstarts in Red Hat Developer Studio or Eclipse
+== Run the Quickstarts in Red Hat CodeReady Studio or Eclipse
 
-You can also start the server and deploy the quickstarts or run the Arquillian tests from Eclipse using JBoss tools. For general information about how to import a quickstart, add a WildFly server, and build and deploy a quickstart, see https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/USE_JBDS.adoc#use_red_hat_jboss_developer_studio_or_eclipse_to_run_the_quickstarts[Use Red Hat Developer Studio or Eclipse to Run the Quickstarts].
+You can also start the server and deploy the quickstarts or run the Arquillian tests from Eclipse using JBoss tools. For general information about how to import a quickstart, add a WildFly server, and build and deploy a quickstart, see https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/USE_JBDS.adoc#use_red_hat_jboss_developer_studio_or_eclipse_to_run_the_quickstarts[Use Red Hat CodeReady Studio or Eclipse to Run the Quickstarts].
 
 [[optional_components]]
 == Configure Optional Components
@@ -249,7 +249,7 @@ Some of the quickstarts that demonstrate transactions require that you install a
 
 A few of the quickstarts use _Byteman_ to demonstrate distributed transaction processing and crash recovery. See  https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_BYTEMAN.adoc#configure_byteman_for_use_with_the_quickstarts[Configure Byteman for Use with the Quickstarts] for instructions.
 
-// END ifndef::ProductRelease,EAPCDRelease[]
+// END ifndef::ProductRelease,EAPCDRelease,EAPXPRelease[]
 endif::[]
 
 //**********************************************************************************
@@ -259,8 +259,8 @@ endif::[]
 //
 //**********************************************************************************
 
-ifdef::ProductRelease,EAPCDRelease[]
-// These instrutions are only for the JBoss EAP product and CD Releases.
+ifdef::ProductRelease,EAPCDRelease,EAPXPRelease[]
+// These instrutions are only for the JBoss EAP product, CD and XP Releases.
 = {productNameFull} ({productName}) Quickstarts
 
 [abstract]
@@ -278,26 +278,26 @@ Each quickstart folder contains a `README{outfilesuffix}` file that describes th
 Make sure you read this entire document before you attempt to work with the quickstarts.
 
 
-ifdef::ProductRelease[]
-// System Requirements are not needed for the CD Releases, only for the Product Release.
+ifdef::ProductRelease,EAPXPRelease[]
+// System Requirements are not needed for the CD Releases, only for the Product and XP Releases.
 [[system_requirements]]
 == System Requirements
 
 The applications these projects produce are designed to be run on {productNameFull} {productVersion} or later.
 
 All you need to build these projects is {buildRequirements}.
-// END ifdef::ProductRelease[]
+// END ifdef::ProductRelease,EAPXPRelease[]
 endif::[]
 
-ifdef::ProductRelease[]
-// Replaceable values are not used in the CD Releases, only for the Product Release.
+ifdef::ProductRelease,EAPXPRelease[]
+// Replaceable values are not used in the CD Releases, only for the Product and XP Releases.
 [[use_of_product_home_and_jboss_home_variables]]
 == Use of {jbossHomeName} and QUICKSTART_HOME Variables
 
 The quickstart `README` files use the _replaceable_ value `__{jbossHomeName}__`  to denote the path to the {productName} installation. When you encounter this value in a `README` file, make sure you replace it with the actual path to your {productName} installation. The installation path is described in detail here: link:{useProductHomeDocUrl}[Use of __{jbossHomeName}__ and __JBOSS_HOME__ Variables]
 
 When you see the replaceable variable __QUICKSTART_HOME__, replace it with the path to the root directory of all of the quickstarts.
-// END ifdef::ProductRelease[]
+// END ifdef::ProductRelease,EAPXPRelease[]
 endif::[]
 
 [[suggested_approach_to_the_quickstarts]]
@@ -318,8 +318,8 @@ include::shared-doc/cd-openshift-getting-started-overview.adoc[leveloffset=+1]
 endif::[]
 
 
-ifdef::ProductRelease[]
-// Running the quickstarts is not used in the CD Releases, only for the Product Release.
+ifdef::ProductRelease,EAPXPRelease[]
+// Running the quickstarts is not used in the CD Releases, only for the Product and XP Releases.
 [[run_the_quickstarts]]
 == Run the Quickstarts Using the Maven Command Line
 
@@ -368,22 +368,22 @@ Use the following command to undeploy the quickstart.
 ----
 $ mvn wildfly:undeploy
 ----
-// END ifdef::ProductRelease[]
+// END ifdef::ProductRelease,EAPXPRelease[]
 endif::[]
 
 
-ifdef::ProductRelease[]
-// Running the quickstarts in Eclipse is not used in the CD Releases, only for the Product Release.
+ifdef::ProductRelease,EAPXPRelease[]
+// Running the quickstarts in Eclipse is not used in the CD Releases, only for the Product and XP Releases.
 [[run_the_quickstarts_in_jboss_developer_studio_or_eclipse]]
 == Run the Quickstarts in {JBDSProductName} or Eclipse
 
 You can also start the server and deploy the quickstarts or run the Arquillian tests from Eclipse using JBoss tools. For general information about how to import a quickstart, add a {productName} server, and build and deploy a quickstart, see link:{useEclipseUrl}[Use {JBDSProductName} or Eclipse to Run the Quickstarts].
-// END ifdef::ProductRelease[]
+// END ifdef::ProductRelease,EAPXPRelease[]
 endif::[]
 
 
-ifdef::ProductRelease[]
-// Optional components are not used in the CD Releases, only for the Product Release.
+ifdef::ProductRelease,EAPXPRelease[]
+// Optional components are not used in the CD Releases, only for the Product and XP Releases.
 [[optional_components]]
 == Configure Optional Components
 
@@ -407,13 +407,13 @@ Some of the quickstarts that demonstrate transactions require that you install a
 === Configure Byteman
 
 A few of the quickstarts use _Byteman_ to demonstrate distributed transaction processing and crash recovery. See  https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_BYTEMAN.adoc#configure_byteman_for_use_with_the_quickstarts[Configure Byteman for Use with the Quickstarts] for instructions.
-// END ifdef::ProductRelease[]
+// END ifdef::ProductRelease,EAPXPRelease[]
 endif::[]
 
-// END ifdef::ProductRelease,EAPCDRelease[]
+// END ifdef::ProductRelease,EAPCDRelease,EAPXPRelease[]
 endif::[]
 
-// The following is included for all versions: WildFly, JBoss EAP, and EAP CD
+// The following is included for all versions: WildFly, JBoss EAP, EAP CD and EAP XP
 [[available_quickstarts]]
 == Table of Available Quickstarts
 
@@ -443,7 +443,7 @@ NOTE: Some of these quickstarts use the H2 database included with WildFly. It is
 | link:ejb-in-war/README{outfilesuffix}[ejb-in-war]|EJB, JSF, WAR | The `ejb-in-war` quickstart demonstrates how to package an EJB bean in a WAR archive and deploy it to {productName}. Arquillian tests are also provided. | Intermediate | _none_
 | link:ejb-multi-server/README{outfilesuffix}[ejb-multi-server]|EJB, EAR | The `ejb-multi-server` quickstart shows how to communicate between multiple applications deployed to different servers using an EJB to log the invocation. | Advanced | _none_
 | link:ejb-remote/README{outfilesuffix}[ejb-remote]|EJB, JNDI | The `ejb-remote` quickstart uses EJB and JNDI to demonstrate how to access an EJB, deployed to {productName}, from a remote Java client application. | Intermediate | _none_
-| link:ejb-security/README{outfilesuffix}[ejb-security]|EJB, Security | The `ejb-security` quickstart demonstrates the use of Java EE declarative security to control access to EJBs in {productName}. | Intermediate | _none_
+| link:ejb-security/README{outfilesuffix}[ejb-security]|EJB, Security | The `ejb-security` quickstart demonstrates the use of Jakarta EE declarative security to control access to EJBs in {productName}. | Intermediate | _none_
 | link:ejb-security-context-propagation/README{outfilesuffix}[ejb-security-context-propagation]|EJB, Security | The `ejb-security-context-propagation` quickstart demonstrates how the security context can be propagated to a remote EJB using a remote outbound connection configuration | Advanced | _none_
 | link:ejb-security-jaas/README{outfilesuffix}[ejb-security-jaas]|EJB, Security | The `ejb-security-jaas` quickstart demonstrates how legacy `JAAS` security domains can be used in conjunction with `Elytron` | Intermediate | _none_
 | link:ejb-security-programmatic-auth/README{outfilesuffix}[ejb-security-programmatic-auth]|EJB, Security | The `ejb-security-programmatic-auth` quickstart demonstrates how to programmatically setup different identities when invoking a remote secured EJB. | Intermediate | _none_
@@ -451,9 +451,9 @@ NOTE: Some of these quickstarts use the H2 database included with WildFly. It is
 | link:ejb-timer/README{outfilesuffix}[ejb-timer]|EJB Timer | The `ejb-timer` quickstart demonstrates how to use the EJB timer service `@Schedule` and `@Timeout` annotations with {productName}. | Beginner | _none_
 | link:greeter/README{outfilesuffix}[greeter]|CDI, JSF, JPA, EJB, JTA | The `greeter` quickstart demonstrates the use of CDI, JPA, JTA, EJB and JSF in {productName}. | Beginner | _none_
 | link:ha-singleton-deployment/README{outfilesuffix}[ha-singleton-deployment]|EJB, Singleton Deployments, Clustering | The `ha-singleton-deployment` quickstart demonstrates the recommended way to deploy any service packaged in an application archive as a cluster-wide singleton. | Advanced | _none_
-| link:ha-singleton-service/README{outfilesuffix}[ha-singleton-service]|MSC, Singleton Service, Clustering | The `ha-singleton-service` quickstart demonstrates how to deploy a cluster-wide singleton MSC service. | Advanced | _none_
+| link:ha-singleton-service/README{outfilesuffix}[ha-singleton-service]|JBoss MSC, Singleton Service, Clustering | The `ha-singleton-service` quickstart demonstrates how to deploy a cluster-wide singleton JBoss MSC service. | Advanced | _none_
 | link:helloworld/README{outfilesuffix}[helloworld]|CDI, Servlet | The `helloworld` quickstart demonstrates the use of CDI and Servlet 3 and is a good starting point to verify {productName} is configured correctly. | Beginner | _none_
-| link:helloworld-classfiletransformer/README{outfilesuffix}[helloworld-classfiletransformer]|ClassLoading | This is a WAR based application showing you how Wildfly let you apply a ClassTransformer to the classes in your enterprise archive. | Advanced | _none_
+| link:helloworld-classfiletransformer/README{outfilesuffix}[helloworld-classfiletransformer]|ClassLoading | This is a WAR based application showing you how WildFly let you apply a ClassTransformer to the classes in your enterprise archive. | Advanced | _none_
 | link:helloworld-html5/README{outfilesuffix}[helloworld-html5]|CDI, JAX-RS, HTML5 | The `helloworld-html5` quickstart demonstrates the use of CDI 1.2 and JAX-RS 2.0 using the HTML5 architecture and RESTful services on the backend. | Beginner | _none_
 | link:helloworld-jms/README{outfilesuffix}[helloworld-jms]|JMS | The `helloworld-jms` quickstart demonstrates the use of external JMS clients with {productName}. | Intermediate | _none_
 | link:helloworld-mbean/README{outfilesuffix}[helloworld-mbean]|CDI, JMX, MBean | The `helloworld-mbean` quickstart demonstrates the use of CDI and MBean in {productName} and includes JConsole instructions and Arquillian tests. | Intermediate | _none_
@@ -478,8 +478,8 @@ NOTE: Some of these quickstarts use the H2 database included with WildFly. It is
 | link:jaxws-retail/README{outfilesuffix}[jaxws-retail]|JAX-WS | The `jaxws-retail` quickstart is a working example of a simple web service endpoint. | Beginner | _none_
 | link:jsonp/README{outfilesuffix}[jsonp]|CDI, JSF, JSON-P | The `jsonp` quickstart demonstrates how to use the JSON-P API to produce object-based structures and then parse and consume them as stream-based JSON strings. | Beginner | _none_
 | link:jta-crash-rec/README{outfilesuffix}[jta-crash-rec]|JTA, Crash Recovery | The `jta-crash-rec` quickstart uses JTA and Byteman to show how to code distributed (XA) transactions in order to preserve ACID properties on server crash. | Advanced | _none_
-| link:jts/README{outfilesuffix}[jts]|JTS, EJB, JMS | The `jts` quickstart shows how to use JTS to perform distributed transactions across multiple containers, fulfilling the properties of an ACID transaction. | Intermediate | link:cmt/README{outfilesuffix}[cmt]
-| link:jts-distributed-crash-rec/README{outfilesuffix}[jts-distributed-crash-rec]|JTS, Crash Recovery | The `jts-distributed-crash-rec` quickstart uses JTS and Byteman to demonstrate distributed crash recovery across multiple application servers. | Advanced | link:jts/README{outfilesuffix}[jts]
+| link:jts/README{outfilesuffix}[jts]|JTS, EJB, JMS | The `jts` quickstart shows how to use JTS to perform distributed transactions across multiple containers, fulfilling the properties of an ACID transaction. | Intermediate | link:cmt/README.html[cmt]
+| link:jts-distributed-crash-rec/README{outfilesuffix}[jts-distributed-crash-rec]|JTS, Crash Recovery | The `jts-distributed-crash-rec` quickstart uses JTS and Byteman to demonstrate distributed crash recovery across multiple application servers. | Advanced | link:jts/README.html[jts]
 | link:kitchensink/README{outfilesuffix}[kitchensink]|CDI, JSF, JPA, EJB, JAX-RS, BV | The `kitchensink` quickstart demonstrates a {javaVersion} web-enabled database application using JSF, CDI, EJB, JPA, and Bean Validation. | Intermediate | _none_
 | link:kitchensink-angularjs/README{outfilesuffix}[kitchensink-angularjs]|AngularJS, CDI, JPA, EJB, JPA, JAX-RS, BV | The `kitchensink-angularjs` quickstart demonstrates a {javaVersion} application using AngularJS with JAX-RS, CDI, EJB, JPA, and Bean Validation. | Intermediate | _none_
 | link:kitchensink-ear/README{outfilesuffix}[kitchensink-ear]|CDI, JSF, JPA, EJB, JAX-RS, BV, EAR | The `kitchensink-ear` quickstart demonstrates web-enabled database application, using JSF, CDI, EJB, JPA, and Bean Validation, packaged as an EAR. | Intermediate | _none_
@@ -490,30 +490,38 @@ NOTE: Some of these quickstarts use the H2 database included with WildFly. It is
 | link:logging/README{outfilesuffix}[logging]|Logging | The `logging` quickstart demonstrates how to configure different logging levels in {productName}. It also includes an asynchronous logging example. | Intermediate | _none_
 | link:logging-tools/README{outfilesuffix}[logging-tools]|JBoss Logging Tools | The `logging-tools` quickstart shows how to use JBoss Logging Tools to create internationalized loggers, exceptions, and messages and localize them. | Beginner | _none_
 | link:mail/README{outfilesuffix}[mail]|JavaMail, CDI, JSF | The `mail` quickstart demonstrates how to send email using CDI and JSF and the default Mail provider that ships with {productName}. | Beginner | _none_
-| link:managed-executor-service/README{outfilesuffix}[managed-executor-service]|EE Concurrency Utilities, JAX-RS, JAX-RS Client API | The `managed-executor-service` quickstart demonstrates how Java EE applications can submit tasks for asynchronous execution. | Beginner | _none_
-| link:messaging-clustering/README{outfilesuffix}[messaging-clustering]|JMS, MDB | The `messaging-clustering` quickstart does not contain any code and instead uses the `helloworld-mdb` quickstart to demonstrate clustering using ActiveMQ Messaging. | Intermediate | link:helloworld-mdb/README{outfilesuffix}[helloworld-mdb]
+| link:managed-executor-service/README{outfilesuffix}[managed-executor-service]|EE Concurrency Utilities, JAX-RS, JAX-RS Client API | The `managed-executor-service` quickstart demonstrates how Jakarta EE applications can submit tasks for asynchronous execution. | Beginner | _none_
+| link:messaging-clustering/README{outfilesuffix}[messaging-clustering]|JMS, MDB | The `messaging-clustering` quickstart does not contain any code and instead uses the `helloworld-mdb` quickstart to demonstrate clustering using ActiveMQ Messaging. | Intermediate | link:helloworld-mdb/README.html[helloworld-mdb]
 | link:messaging-clustering-singleton/README{outfilesuffix}[messaging-clustering-singleton]|JMS, MDB, Clustering | The `messaging-clustering-singleton` quickstart uses a JMS topic and a queue to demonstrate clustering using {productName} messaging with MDB singleton configuration where only one node in the cluster will be active. | Advanced | _none_
+| link:microprofile-config/README{outfilesuffix}[microprofile-config]|MicroProfile Config | The `microprofile-config` quickstart demonstrates the use of the MicroProfile Config specification in {productName}. | Beginner | _none_
+| link:microprofile-fault-tolerance/README{outfilesuffix}[microprofile-fault-tolerance]|MicroProfile, Fault Tolerance | The `microprofile-fault-tolerance` quickstart demonstrates how to use Eclipse MicroProfile Fault Tolerance in {productName}. | Intermediate | _none_
+| link:microprofile-health/README{outfilesuffix}[microprofile-health]|MicroProfile Health | The `microprofile-health` quickstart demonstrates the use of the MicroProfile Health specification in {productName}. | Beginner | _none_
+| link:microprofile-jwt/README{outfilesuffix}[microprofile-jwt]|JWT, Security, MicroProfile | The `microprofile-jwt` quickstart demonstrates the use of the MicroProfile JWT specification in {productName}. | Intermediate | _none_
+| link:microprofile-metrics/README{outfilesuffix}[microprofile-metrics]|MicroProfile Metrics | The `microprofile-metrics` quickstart demonstrates the use of the MicroProfile Metrics specification use in {productName}. | Beginner | _none_
+| link:microprofile-openapi/README{outfilesuffix}[microprofile-openapi]|MicroProfile OpenAPI | This guide demonstrate how to use the MicroProfile OpenAPI functionality in {productName} to expose an OpenAPI document for a simple REST application. | Beginner | _none_
+| link:microprofile-opentracing/README{outfilesuffix}[microprofile-opentracing]|MicroProfile OpenTracing | The `microprofile-opentracing` quickstart demonstrates the use of the MicroProfile OpenTracing specification in {productName}. | Beginner | _none_
+| link:microprofile-rest-client/README{outfilesuffix}[microprofile-rest-client]|MicroProfile REST Client | The `microprofile-rest-client` quickstart demonstrates the use of the MicroProfile REST Client specification in {productName}. | Beginner | _none_
 | link:numberguess/README{outfilesuffix}[numberguess]|CDI, JSF | The `numberguess` quickstart demonstrates the use of CDI  (Contexts and Dependency Injection) and JSF (JavaServer Faces) in {productName}. | Beginner | _none_
 | link:payment-cdi-event/README{outfilesuffix}[payment-cdi-event]|CDI, JSF | The `payment-cdi-event` quickstart demonstrates how to create credit and debit CDI Events in {productName}, using a JSF front-end client. | Beginner | _none_
-| link:resteasy-jaxrs-client/README{outfilesuffix}[resteasy-jaxrs-client]|JAX-RS, CDI | The `resteasy-jaxrs-client` quickstart demonstrates an external JAX-RS RestEasy client, which interacts with a JAX-RS Web service that uses CDI and JAX-RS. | Intermediate | link:helloworld-rs/README{outfilesuffix}[helloworld-rs]
+| link:resteasy-jaxrs-client/README{outfilesuffix}[resteasy-jaxrs-client]|JAX-RS, CDI | The `resteasy-jaxrs-client` quickstart demonstrates an external JAX-RS RestEasy client, which interacts with a JAX-RS Web service that uses CDI and JAX-RS. | Intermediate | link:helloworld-rs/README.html[helloworld-rs]
 | link:security-domain-to-domain/README{outfilesuffix}[security-domain-to-domain]|Servlet, EJB, Security | The `security-domain-to-domain` quickstart demonstrates the propagation of an identity across two different deployments using different security domains. | Advanced | _none_
 | link:servlet-async/README{outfilesuffix}[servlet-async]|Asynchronous Servlet, CDI, EJB | The `servlet-async` quickstart demonstrates how to use asynchronous servlets to detach long-running tasks and free up the request processing thread. | Intermediate | _none_
 | link:servlet-filterlistener/README{outfilesuffix}[servlet-filterlistener]|Servlet Filter, Servlet Listener | The `servlet-filterlistener` quickstart demonstrates how to use Servlet filters and listeners in an application. | Intermediate | _none_
-| link:servlet-security/README{outfilesuffix}[servlet-security]|Servlet, Security | The `servlet-security` quickstart demonstrates the use of Java EE declarative security to control access to Servlets and Security in {productName}. | Intermediate | _none_
+| link:servlet-security/README{outfilesuffix}[servlet-security]|Servlet, Security | The `servlet-security` quickstart demonstrates the use of Jakarta EE declarative security to control access to Servlets and Security in {productName}. | Intermediate | _none_
 | link:shopping-cart/README{outfilesuffix}[shopping-cart]|SFSB EJB | The `shopping-cart` quickstart demonstrates how to deploy and run a simple {javaVersion} shopping cart application that uses a stateful session bean (SFSB). | Intermediate | _none_
 | link:spring-greeter/README{outfilesuffix}[spring-greeter]|Spring MVC, JSP, JPA | The `spring-greeter` quickstart is based on the `greeter` quickstart, but differs in that it uses Spring MVC for Mapping `GET` and `POST` requests. | Beginner | _none_
 | link:spring-kitchensink-basic/README{outfilesuffix}[spring-kitchensink-basic]|JSP, JPA, JSON, Spring, JUnit | The `spring-kitchensink-basic` quickstart is an example of a {javaVersion} application using JSP, JPA and Spring 4.x. | Intermediate | _none_
 | link:spring-kitchensink-springmvctest/README{outfilesuffix}[spring-kitchensink-springmvctest]|JSP, JPA, JSON, Spring, JUnit | The  `spring-kitchensink-springmvctest` quickstart demonstrates how to create an MVC application using JSP, JPA and Spring 4.x. | Intermediate | _none_
 | link:spring-resteasy/README{outfilesuffix}[spring-resteasy]|Resteasy, Spring | The `spring-resteasy` quickstart demonstrates how to package and deploy a web application that includes resteasy-spring integration. | Beginner | _none_
-| link:tasks-jsf/README{outfilesuffix}[tasks-jsf]|JSF, JPA | The `tasks-jsf` quickstart demonstrates how to use JPA persistence with JSF as the view layer. | Intermediate | link:tasks/README{outfilesuffix}[tasks]
-| link:tasks-rs/README{outfilesuffix}[tasks-rs]|JPA, JAX-RS | The `tasks-rs` quickstart demonstrates how to implement a JAX-RS service that uses JPA persistence. | Intermediate | link:tasks/README{outfilesuffix}[tasks]
+| link:tasks-jsf/README{outfilesuffix}[tasks-jsf]|JSF, JPA | The `tasks-jsf` quickstart demonstrates how to use JPA persistence with JSF as the view layer. | Intermediate | _none_
+| link:tasks-rs/README{outfilesuffix}[tasks-rs]|JPA, JAX-RS | The `tasks-rs` quickstart demonstrates how to implement a JAX-RS service that uses JPA persistence. | Intermediate | _none_
 | link:temperature-converter/README{outfilesuffix}[temperature-converter]|CDI, JSF, SLSB EJB | The `temperature-converter` quickstart does temperature conversion using an EJB Stateless Session Bean (SLSB), CDI, and a JSF front-end client. | Beginner | _none_
-| link:thread-racing/README{outfilesuffix}[thread-racing]|Batch, CDI, EE Concurrency, JAX-RS, JMS, JPA, JSON, Web Sockets | A thread racing web application that demonstrates technologies introduced or updated in the latest Java EE specification. | Beginner | _none_
+| link:thread-racing/README{outfilesuffix}[thread-racing]|Batch, CDI, EE Concurrency, JAX-RS, JMS, JPA, JSON, Web Sockets | A thread racing web application that demonstrates technologies introduced or updated in the latest Jakarta EE specification. | Beginner | _none_
 | link:websocket-client/README{outfilesuffix}[websocket-client]|Web Socket, CDI Events, JSON, SSL | Demonstrates use of a Javascript WebSocket client, WebSocket configuration, programmatic binding, and secure WebSocket. | Intermediate | _none_
 | link:websocket-endpoint/README{outfilesuffix}[websocket-endpoint]|CDI, WebSocket, JSON-P | Shows how to use WebSockets with JSON to broadcast information to all open WebSocket sessions in {productName}. | Beginner | _none_
 | link:websocket-hello/README{outfilesuffix}[websocket-hello]|WebSocket, CDI, JSF | The `websocket-hello` quickstart demonstrates how to create a simple WebSocket application. | Beginner | _none_
-| link:wicket-ear/README{outfilesuffix}[wicket-ear]|Apache Wicket, JPA | Demonstrates how to use the Wicket Framework 7.x with the JBoss server using the Wicket Java EE integration, packaged as an EAR | Intermediate | _none_
-| link:wicket-war/README{outfilesuffix}[wicket-war]|Apache Wicket, JPA | Demonstrates how to use the Wicket Framework 7.x with the JBoss server using the Wicket Java EE integration packaged as a WAR | Intermediate | _none_
+| link:wicket-ear/README{outfilesuffix}[wicket-ear]|Apache Wicket, JPA | Demonstrates how to use the Wicket Framework 7.x with the JBoss server using the Wicket Jakarta EE integration, packaged as an EAR | Intermediate | _none_
+| link:wicket-war/README{outfilesuffix}[wicket-war]|Apache Wicket, JPA | Demonstrates how to use the Wicket Framework 7.x with the JBoss server using the Wicket Jakarta EE integration packaged as a WAR | Intermediate | _none_
 | link:wsat-simple/README{outfilesuffix}[wsat-simple]|WS-AT, JAX-WS | The `wsat-simple` quickstart demonstrates a WS-AT (WS-AtomicTransaction) enabled JAX-WS Web service, bundled as a WAR, and deployed to {productName}. | Intermediate | _none_
 | link:wsba-coordinator-completion-simple/README{outfilesuffix}[wsba-coordinator-completion-simple]|WS-BA, JAX-WS | The `wsba-coordinator-completion-simple` quickstart deploys a WS-BA (WS Business Activity) enabled JAX-WS Web service WAR (CoordinatorCompletion protocol). | Intermediate | _none_
 | link:wsba-participant-completion-simple/README{outfilesuffix}[wsba-participant-completion-simple]|WS-BA, JAX-WS | The `wsba-participant-completion-simple` quickstart deploys a WS-BA (WS Business Activity) enabled JAX-WS Web service WAR (ParticipantCompletion Protocol). | Intermediate | _none_

@@ -22,7 +22,7 @@ The `bmt` quickstart demonstrates Bean-Managed Transactions (BMT), showing how t
 
 The `bmt` quickstart demonstrates how to manually manage transaction demarcation while accessing JPA entities in {productNameFull}.
 
-On occasion, the application developer requires finer grained control over the lifecycle of JTA transactions and JPA Entity Managers than the defaults provided by the Java EE container. This example shows how the developer can override these defaults and take control of aspects of the lifecycle of JPA and transactions.
+On occasion, the application developer requires finer grained control over the lifecycle of JTA transactions and JPA Entity Managers than the defaults provided by the Jakarta EE container. This example shows how the developer can override these defaults and take control of aspects of the lifecycle of JPA and transactions.
 
 When you run this example, you are presented with a *Use bean managed Entity Managers* checkbox.
 
@@ -71,7 +71,7 @@ HHH000431: Unable to determine H2 database version, certain features may not wor
 
 // Undeploy the Quickstart
 include::../shared-doc/undeploy-the-quickstart.adoc[leveloffset=+1]
-// Run the Quickstart in Red Hat Developer Studio or Eclipse
+// Run the Quickstart in Red Hat CodeReady Studio or Eclipse
 include::../shared-doc/run-the-quickstart-in-jboss-developer-studio.adoc[leveloffset=+1]
 // Debug the Application
 include::../shared-doc/debug-the-application.adoc[leveloffset=+1]
